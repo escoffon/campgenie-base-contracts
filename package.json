@@ -1,0 +1,35 @@
+{
+  "name": "campgenie-contracts",
+  "version": "0.1.0",
+  "description": "CampGenie base contracts for ERC20 tokens and rewarders",
+  "scripts": {
+    "compile": "scripts/compile.sh",
+    "test": "scripts/test.sh",
+    "console": "truffle console",
+    "ganache": "scripts/ganache.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escoffon/campgenie-contracts.git"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "campgenie"
+  ],
+  "author": "Emil Scoffone <emil@scoffone.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/escoffon/campgenie-contracts/issues"
+  },
+  "homepage": "https://github.com/escoffon/campgenie-contracts",
+  "dependencies": {
+    "ganache-cli": "^6.1.3",
+    "lodash": "^4.17.10",
+    "openzeppelin-solidity": "^1.10.0",
+    "truffle": "^4.1.12"
+  },
+  "devDependencies": {}
+}

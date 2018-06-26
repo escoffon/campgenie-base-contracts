@@ -7,11 +7,13 @@ Ethereum [smart contracts](https://en.wikipedia.org/wiki/Smart_contract).
 
 This package uses [Truffle](https://github.com/ConsenSys/truffle) for development and contract management.
 Install it with [npm](https://www.npmjs.com):
+
     npm i [--save-dev] campgenie-base-contracts
 
 ## Development
 
 You can access the base classes in your Solidity code like this:
+
     import 'campgenie-base-contracts/contracts/CGRewarderBase.sol';
 
     contract CGRewarderBaseTester is CGRewarderBase {

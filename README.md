@@ -8,7 +8,7 @@ Ethereum [smart contracts](https://en.wikipedia.org/wiki/Smart_contract).
 This package uses [Truffle](https://github.com/ConsenSys/truffle) for development and contract management.
 Install it with [npm](https://www.npmjs.com):
 
-    npm i [--save-dev] campgenie-base-contracts
+    npm i [--save-dev] git+https://github.com/escoffon/campgenie-base-contracts.git
 
 ## Development
 

@@ -1,5 +1,5 @@
 {
-  "name": "campgenie-contracts",
+  "name": "campgenie-base-contracts",
   "version": "0.1.0",
   "description": "CampGenie base contracts for ERC20 tokens and rewarders",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/escoffon/campgenie-contracts.git"
+    "url": "git+https://github.com/escoffon/campgenie-base-contracts.git"
   },
   "keywords": [
     "solidity",
@@ -22,9 +22,9 @@
   "author": "Emil Scoffone <emil@scoffone.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/escoffon/campgenie-contracts/issues"
+    "url": "https://github.com/escoffon/campgenie-base-contracts/issues"
   },
-  "homepage": "https://github.com/escoffon/campgenie-contracts",
+  "homepage": "https://github.com/escoffon/campgenie-base-contracts",
   "dependencies": {},
   "devDependencies": {
     "ganache-cli": "^6.1.3",

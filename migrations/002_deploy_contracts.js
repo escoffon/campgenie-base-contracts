@@ -1,35 +1,31 @@
-let CGTokenBase = artifacts.require("./contracts/CGTokenBase.sol");
-let CGTokenBaseTester = artifacts.require("./contracts/mocks/CGTokenBaseTester.sol");
-let CGMintableTester = artifacts.require("./contracts/mocks/CGMintableTester.sol");
-let CGMintableTokenBaseTester = artifacts.require("./contracts/mocks/CGMintableTokenBaseTester.sol");
-let CGRewarderBaseTester = artifacts.require("./contracts/mocks/CGRewarderBaseTester.sol");
-
-const mu = require('./utils');
+let CGTokenBaseTester = artifacts.require("./mocks/CGTokenBaseTester.sol");
+let CGMintableTester = artifacts.require("./mocks/CGMintableTester.sol");
+let CGMintableTokenBaseTester = artifacts.require("./mocks/CGMintableTokenBaseTester.sol");
+let CGRewarderBaseTester = artifacts.require("./mocks/CGRewarderBaseTester.sol");
 
 module.exports = function(deployer, network, accounts) {
     // We deploy only with test networks
 
     if ((network == 'development') || (network == 'ganache') || (network == 'localgeth'))
     {
-	deployer.deploy(CGTokenBaseTester, 1000, 4, '0x0', 0)
+	deployer
 	    .then(function() {
-		      mu.saveAddress(CGTokenBaseTester, CGTokenBaseTester.address);
-		      deployer.logger.log("Deployed CGTokenBaseTester at " + CGTokenBaseTester.address);
-		      return deployer.deploy(CGRewarderBaseTester, CGTokenBaseTester.address);
+			  return deployer.deploy(CGTokenBaseTester, 1000, 4, '0x0', 0);
 		  })
-	    .then(function() {
-		      mu.saveAddress(CGRewarderBaseTester, CGRewarderBaseTester.address);
-		      deployer.logger.log("Deployed CGRewarderBaseTester at " + CGRewarderBaseTester.address);
+	    .then(function(instance) {
+		      deployer.logger.log("Deployed CGTokenBaseTester at " + instance.address);
+		      return deployer.deploy(CGRewarderBaseTester, instance.address);
+		  })
+	    .then(function(instance) {
+		      deployer.logger.log("Deployed CGRewarderBaseTester at " + instance.address);
 		      return deployer.deploy(CGMintableTester);
 		  })
-	    .then(function() {
-		      mu.saveAddress(CGMintableTester, CGMintableTester.address);
-		      deployer.logger.log("Deployed CGMintableTester at " + CGMintableTester.address);
+	    .then(function(instance) {
+		      deployer.logger.log("Deployed CGMintableTester at " + instance.address);
 		      return deployer.deploy(CGMintableTokenBaseTester, '100', '1');
 		  })
-	    .then(function() {
-		      mu.saveAddress(CGMintableTokenBaseTester, CGMintableTokenBaseTester.address);
-		      deployer.logger.log("Deployed CGMintableTokenBaseTester at " + CGMintableTokenBaseTester.address);
+	    .then(function(instance) {
+		      deployer.logger.log("Deployed CGMintableTokenBaseTester at " + instance.address);
 		  })
 	    .catch(function(e) {
 		       deployer.logger.log("error: " + e);

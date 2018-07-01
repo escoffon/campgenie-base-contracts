@@ -26,3 +26,6 @@ db/ganache
 # Ignore the Truffle-generated artifacts files
 build/contracts
 build/contract_addresses.json
+
+# Doxity
+doxity

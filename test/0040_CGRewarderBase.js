@@ -278,7 +278,7 @@ contract('CGRewarderBase', function(accounts) {
 		       var elist = testutils.filterEvents(r, { event: 'Disburse' });
 		       disbursed = elist[0].args.amount.toNumber();
 		       assert.equal(120, disbursed, 'disbursement not as expected');
-		       return rew.estimateTestReward(60);
+		       return rew.estimateTestReward(not_owner, 60);
 		   })
 	     .then(function(r) {
 		       assert.equal(120, r.toNumber(), "incorrect reward estimate");

@@ -7,7 +7,22 @@ import 'openzeppelin-solidity/contracts/lifecycle/Pausable.sol';
 /**
  * @title Base class for CampGenie token rewards contracts.
  * @dev This contract implement the common functionality for contracts that disburse CampGenie
- *  token rewards. Subclasses implement the application-specific rewards.
+ *  token rewards. Subclasses implement the application-specific rewards, in particular the estimate
+ *  and reward functions.
+ *
+ *  Reward functions are expected to take at least one argument, the address of the account that is
+ *  awarded the reward; other parameters used by the reward calculations are passed in additional
+ *  arguments. The general structure of a reward function is to calculate the token amount, based on
+ *  the provided parameters, and then call the `disburse` function.
+ *
+ *  Subclasses are also encouraged to define a function that returns an estimate of the reward value;
+ *  this function takes the same arguments as the corresponding reward function, but it typically ignores
+ *  the first one (the address of the beneficiary), which should not be needed by the calculation.
+ *  (We leave it in the signature so that one can base the reward amount also on the recipient, but this
+ *  is not commonly done, if at all.)
+ *
+ *  The `mocks` directory contains a sample subcontract that implements reward functions, and that is used
+ *  by the test harness.
  */
 
 contract CGRewarderBase is Ownable, Pausable {

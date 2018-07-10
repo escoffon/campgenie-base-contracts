@@ -29,10 +29,11 @@ contract CGRewarderBaseTester is CGRewarderBase {
 
     /**
      * @notice Estimate the current reward.
+     * @param _to The address to which tokens should be disbursed. Note that this argument is not used.
      * @param _base The base value for the reward.
      */
 
-    function estimateTestReward(uint32 _base)
+    function estimateTestReward(address _to, uint32 _base)
         public view returns (uint256)
     {
         return calculateTestReward(_base);
